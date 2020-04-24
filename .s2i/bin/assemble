@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+source "${JBOSS_CONTAINER_UTIL_LOGGING_MODULE}/logging.sh"
+source "${JBOSS_CONTAINER_MAVEN_S2I_MODULE}/maven-s2i"
+
+# initialise ourselves since we're not running maven_s2i_build
+maven_s2i_init
+
+# run gradle wrapper
+cd "${S2I_SOURCE_DIR}"
+./gradlew --no-daemon "${GRADLE_S2I_GOALS:-build}"
+
+maven_s2i_deploy_artifacts

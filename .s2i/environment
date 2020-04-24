@@ -1,0 +1,1 @@
+MAVEN_S2I_ARTIFACT_DIRS=reviews-application/build/libs

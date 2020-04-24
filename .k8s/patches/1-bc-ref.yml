@@ -1,0 +1,4 @@
+spec:
+  source:
+    git:
+      ref: migrating-apps-v3/1.0
