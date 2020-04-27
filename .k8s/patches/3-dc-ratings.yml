@@ -1,0 +1,9 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: reviews
+          env:
+            - name: ENABLE_RATINGS
+              value: 'true'
+
