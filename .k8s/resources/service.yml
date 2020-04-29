@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2020-04-29T11:00:54Z"
+  labels:
+    app: reviews
+    app.kubernetes.io/component: reviews
+    app.kubernetes.io/instance: reviews
+  name: reviews
+  namespace: bookinfo
+  resourceVersion: "404674559"
+  selfLink: /api/v1/namespaces/bookinfo/services/reviews
+  uid: b298bf16-8a08-11ea-a5ee-02fdb1202f5a
+spec:
+  clusterIP: 127.0.0.1
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: 8778-tcp
+    port: 8778
+    protocol: TCP
+    targetPort: 8778
+  selector:
+    deploymentconfig: reviews
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

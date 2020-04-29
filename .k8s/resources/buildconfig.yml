@@ -1,0 +1,51 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2020-04-29T11:00:54Z"
+  labels:
+    app: reviews
+    app.kubernetes.io/component: reviews
+    app.kubernetes.io/instance: reviews
+  name: reviews
+  namespace: bookinfo
+  resourceVersion: "404674530"
+  selfLink: /apis/build.openshift.io/v1/namespaces/bookinfo/buildconfigs/reviews
+  uid: b249b9b6-8a08-11ea-a6ee-0a580a820124
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: reviews:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: migrating-apps-v3/1.2
+      uri: https://github.com/rh-tstockwell/bookinfo-reviews.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: wildfly:latest
+        namespace: bookinfo
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: -Rx__YODtDV8ZaFR_XAe
+    type: GitHub
+  - generic:
+      secret: bOTsiQjqvFo6EcMe06Df
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: quay.io/wildfly/wildfly-centos7@sha256:c9e3dd86ede3fa93a3e1d07452be8921d6f5e1f248c6b3fcc1f9546cf177c548
+    type: ImageChange
+status:
+  lastVersion: 1

@@ -1,0 +1,96 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2020-04-29T11:00:54Z"
+  generation: 3
+  labels:
+    app: reviews
+    app.kubernetes.io/component: reviews
+    app.kubernetes.io/instance: reviews
+  name: reviews
+  namespace: bookinfo
+  resourceVersion: "404681433"
+  selfLink: /apis/apps.openshift.io/v1/namespaces/bookinfo/deploymentconfigs/reviews
+  uid: b2734120-8a08-11ea-9655-0a580a8100f0
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    deploymentconfig: reviews
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        deploymentconfig: reviews
+    spec:
+      containers:
+      - env:
+        - name: ENABLE_RATINGS
+          value: "true"
+        image: image-registry.openshift-image-registry.svc:5000/bookinfo/reviews@sha256:1e57726c6344cc91958d840e5a5f8ecfc494e50d86fb2df96cfae809aac84d47
+        imagePullPolicy: Always
+        name: reviews
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8778
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - reviews
+      from:
+        kind: ImageStreamTag
+        name: reviews:latest
+        namespace: bookinfo
+      lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/bookinfo/reviews@sha256:1e57726c6344cc91958d840e5a5f8ecfc494e50d86fb2df96cfae809aac84d47
+    type: ImageChange
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-04-29T11:06:27Z"
+    lastUpdateTime: "2020-04-29T11:06:27Z"
+    message: Deployment config has minimum availability.
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-04-29T11:05:53Z"
+    lastUpdateTime: "2020-04-29T11:06:28Z"
+    message: replication controller "reviews-1" successfully rolled out
+    reason: NewReplicationControllerAvailable
+    status: "True"
+    type: Progressing
+  details:
+    causes:
+    - type: ConfigChange
+    message: config change
+  latestVersion: 1
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1
