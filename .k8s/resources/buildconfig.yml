@@ -1,18 +1,12 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  annotations:
-    openshift.io/generated-by: OpenShiftNewApp
-  creationTimestamp: "2020-04-29T11:00:54Z"
+  annotations: {}
   labels:
     app: reviews
     app.kubernetes.io/component: reviews
     app.kubernetes.io/instance: reviews
   name: reviews
-  namespace: bookinfo
-  resourceVersion: "404674530"
-  selfLink: /apis/build.openshift.io/v1/namespaces/bookinfo/buildconfigs/reviews
-  uid: b249b9b6-8a08-11ea-a6ee-0a580a820124
 spec:
   failedBuildsHistoryLimit: 5
   nodeSelector: null
@@ -44,8 +38,5 @@ spec:
       secret: bOTsiQjqvFo6EcMe06Df
     type: Generic
   - type: ConfigChange
-  - imageChange:
-      lastTriggeredImageID: quay.io/wildfly/wildfly-centos7@sha256:c9e3dd86ede3fa93a3e1d07452be8921d6f5e1f248c6b3fcc1f9546cf177c548
+  - imageChange: {}
     type: ImageChange
-status:
-  lastVersion: 1

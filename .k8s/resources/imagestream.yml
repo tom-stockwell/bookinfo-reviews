@@ -1,29 +1,12 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  annotations:
-    openshift.io/generated-by: OpenShiftNewApp
-  creationTimestamp: "2020-04-29T11:00:54Z"
-  generation: 1
+  annotations: {}
   labels:
     app: reviews
     app.kubernetes.io/component: reviews
     app.kubernetes.io/instance: reviews
   name: reviews
-  namespace: bookinfo
-  resourceVersion: "404680506"
-  selfLink: /apis/image.openshift.io/v1/namespaces/bookinfo/imagestreams/reviews
-  uid: b2259fee-8a08-11ea-b451-0a580a80011a
 spec:
   lookupPolicy:
     local: false
-status:
-  dockerImageRepository: image-registry.openshift-image-registry.svc:5000/bookinfo/reviews
-  publicDockerImageRepository: default-route-openshift-image-registry.apps.cluster.example.com/bookinfo/reviews
-  tags:
-  - items:
-    - created: "2020-04-29T11:05:44Z"
-      dockerImageReference: image-registry.openshift-image-registry.svc:5000/bookinfo/reviews@sha256:1e57726c6344cc91958d840e5a5f8ecfc494e50d86fb2df96cfae809aac84d47
-      generation: 1
-      image: sha256:1e57726c6344cc91958d840e5a5f8ecfc494e50d86fb2df96cfae809aac84d47
-    tag: latest

@@ -3,18 +3,12 @@ kind: Route
 metadata:
   annotations:
     openshift.io/host.generated: "true"
-  creationTimestamp: "2020-04-29T11:01:26Z"
   labels:
     app: reviews
     app.kubernetes.io/component: reviews
     app.kubernetes.io/instance: reviews
   name: reviews
-  namespace: bookinfo
-  resourceVersion: "404675344"
-  selfLink: /apis/route.openshift.io/v1/namespaces/bookinfo/routes/reviews
-  uid: c5493779-8a08-11ea-b451-0a580a80011a
 spec:
-  host: reviews-bookinfo.apps.cluster.example.com
   port:
     targetPort: 8080-tcp
   subdomain: ""
@@ -23,13 +17,3 @@ spec:
     name: reviews
     weight: 100
   wildcardPolicy: None
-status:
-  ingress:
-  - conditions:
-    - lastTransitionTime: "2020-04-29T11:01:26Z"
-      status: "True"
-      type: Admitted
-    host: reviews-bookinfo.apps.cluster.example.com
-    routerCanonicalHostname: apps.cluster.example.com
-    routerName: default
-    wildcardPolicy: None
